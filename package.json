@@ -1,0 +1,26 @@
+{
+  "name": "dialog777",
+  "displayName": "dialogo",
+  "description": "a dialog system for game",
+  "version": "0.0.1",
+  "publisher": "SillyCat",
+  "engines": {
+    "vscode": "^1.94.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "contributes": {
+    "languages": [{
+      "id": "dialogo",
+      "aliases": ["dialogo", "dialogo"],
+      "extensions": [".dlg"],
+      "configuration": "./language-configuration.json"
+    }],
+    "grammars": [{
+      "language": "dialogo",
+      "scopeName": "text.dlg",
+      "path": "./syntaxes/dialogo.tmLanguage.json"
+    }]
+  }
+}
