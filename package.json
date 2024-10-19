@@ -2,7 +2,7 @@
   "name": "dialog777",
   "displayName": "dialogo",
   "description": "a dialog system for game",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "publisher": "SillyCat",
   "engines": {
     "vscode": "^1.94.0"
