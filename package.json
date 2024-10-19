@@ -4,6 +4,11 @@
   "description": "a dialog system for game",
   "version": "1.0.0",
   "publisher": "SillyCat",
+  "icon": "images/logo.png",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wiltchamberian/Dialogo.git"
+  },
   "engines": {
     "vscode": "^1.94.0"
   },

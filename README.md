@@ -4,7 +4,7 @@ This is a domain-specific language designed for game dialog systems. It is much 
 
 ## Features
 
-\!\[feature 1\]\(images/feature.png\)
+![Feature 1](images/feature.PNG)
 
 ## Release Notes
 
