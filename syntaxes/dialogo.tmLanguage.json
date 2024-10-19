@@ -1,0 +1,102 @@
+{
+	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"name": "dialogo",
+	"patterns": [
+		{
+			"include": "#keywords"
+		},
+		{
+			"include": "#strings"
+		},
+		{
+			"include": "#scene_tag"
+		},
+		{
+			"include": "#tag"
+		},
+		{
+			"include": "#node"
+		}
+	],
+	"repository": {
+		"keywords": {
+			"patterns": [{
+				"name": "keyword.control.dialogo",
+				"match": "\\b(if|while|for|return)\\b"
+			}]
+		},
+		"strings": {
+			"name": "string.quoted.double.dialogo",
+			"begin": "\"",
+			"end": "\"",
+			"patterns": [
+				{
+					"name": "constant.character.escape.dialogo",
+					"match": "\\\\."
+				}
+			]
+		},
+    "scene_tag": {
+			"patterns": [
+				{
+					"name": "entity.scene.name",
+					"begin": "==\\s*",
+					"end": "\\s*",
+					"captures": {
+						"0": { "name" : "entity.scene.name" }
+					},
+          "patterns":[
+            {
+              "name": "entity.scene.name.content",
+              "match": "([a-zA-Z0-9_\\s]+)"
+            }
+          ]
+				}
+			]
+		},
+		"tag": {
+			"patterns": [
+				{
+					"name": "entity.tag",
+					"begin": "\\[",
+					"end": "\\]",
+					"captures": {
+						"0": { "name" : "punctuation.tag.begin"},
+						"1": { "name" : "entity.tag.name"}
+					}
+				}
+			]
+		},
+		"node": {
+			"patterns": [
+				{
+					"name": "entity.node",
+					"begin": "\\{",
+					"end": "\\}",
+					"captures": {
+						"0": { "name" : "punctuation.node.begin"},
+						"1": { "name" : "punctuation.node.end"}
+					},
+					"foldingStartMarker": "\\{",
+					"foldingStopMarker": "\\}"
+				},
+				{
+					"name": "entity.choice",
+					"begin": "\\(",
+					"end": "\\)",
+					"patterns": [
+						{
+							"name": "keyword.arrow",
+							"match": "->"
+						},
+						{
+							"name": "entity.choice.text",
+							"match": "[^\\)]+"
+						}
+					]
+				}
+			]
+		}
+	},
+	"scopeName": "text.dlg"
+}
