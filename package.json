@@ -1,8 +1,8 @@
 {
   "name": "dialog777",
-  "displayName": "dialogo",
+  "displayName": "Dialogo",
   "description": "a dialog system for game",
-  "version": "1.0.0",
+  "version": "2.0.1",
   "publisher": "SillyCat",
   "icon": "images/logo.png",
   "repository": {
@@ -16,6 +16,13 @@
     "Programming Languages"
   ],
   "contributes": {
+    "themes": [
+      {
+          "label": "My Custom Theme",
+          "uiTheme": "vs", 
+          "path": "./myCustomTheme.json"
+      }
+    ],
     "languages": [{
       "id": "dialogo",
       "aliases": ["dialogo", "dialogo"],

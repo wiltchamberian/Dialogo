@@ -5,26 +5,43 @@
 		{
 			"include": "#keywords"
 		},
+    {
+      "include": "#class"
+    },
 		{
 			"include": "#strings"
 		},
 		{
-			"include": "#scene_tag"
+			"include": "#plot"
 		},
 		{
 			"include": "#tag"
 		},
 		{
 			"include": "#node"
-		}
+		},
+    {
+      "include" : "#actor"
+    },
+    {
+      "include": "#comment"
+    }
 	],
 	"repository": {
 		"keywords": {
 			"patterns": [{
 				"name": "keyword.control.dialogo",
-				"match": "\\b(if|while|for|return)\\b"
+				"match": "\\b(let|if|while|for|return)\\b"
 			}]
 		},
+    "class": {
+      "patterns":[
+        {
+          "name":"class.control",
+          "match":"\\b(Actor)\\b"
+        }
+      ]
+    },
 		"strings": {
 			"name": "string.quoted.double.dialogo",
 			"begin": "\"",
@@ -35,25 +52,73 @@
 					"match": "\\\\."
 				}
 			]
-		},
-    "scene_tag": {
+		}, 
+
+    "comment": {
+      "name": "entity.comment",
+      "begin": "//",
+      "end": "$", 
+      "beginCaptures": {
+          "0": { "name": "punctuation.definition.comment" }
+      },
+      "patterns": [
+          {
+              "name": "entity.comment.dialogo",
+              "match": ".+"
+          }
+      ]
+    },
+
+    "actor": {
+      "name": "entity.actor",
+      "begin": "\\s*(\\w+)\\s*\\{",
+      "end": "\\s", 
+      "beginCaptures": {
+          "1": { "name": "entity.actor.name" }
+      },
+      "patterns": [
+          {
+              "name": "entity.actor.dialogo",
+              "match": ".+"
+          }
+      ]
+    },
+
+    "plot": {
 			"patterns": [
 				{
-					"name": "entity.scene.name",
-					"begin": "==\\s*",
-					"end": "\\s*",
+					"name": "entity.plot.name",
+					"begin": "==",
+					"end": "==",
 					"captures": {
-						"0": { "name" : "entity.scene.name" }
+						"0": { "name" : "entity.plot.name" }
 					},
           "patterns":[
             {
-              "name": "entity.scene.name.content",
+              "name": "entity.plot.name.content",
               "match": "([a-zA-Z0-9_\\s]+)"
             }
           ]
 				}
 			]
 		},
+    "scene":{
+      "patterns": [
+				{
+					"name": "entity.scene",
+					"begin": "\\{",
+					"end": "\\}",
+          "beginCaptures": {
+            "0": { "name": "punctuation.node.begin" }
+          },
+          "endCaptures": {
+            "0": { "name": "punctuation.node.end" }
+          },
+          "foldingStartMarker": "\\{",
+					"foldingStopMarker": "\\}"
+				}
+			]
+    },
 		"tag": {
 			"patterns": [
 				{
@@ -63,7 +128,13 @@
 					"captures": {
 						"0": { "name" : "punctuation.tag.begin"},
 						"1": { "name" : "entity.tag.name"}
-					}
+					},
+          "patterns":[
+            {
+              "name": "entity.tag.name",
+              "match": "([a-zA-Z0-9_\\s]+)"
+            }
+          ]
 				}
 			]
 		},
@@ -71,14 +142,20 @@
 			"patterns": [
 				{
 					"name": "entity.node",
-					"begin": "\\{",
-					"end": "\\}",
-					"captures": {
-						"0": { "name" : "punctuation.node.begin"},
-						"1": { "name" : "punctuation.node.end"}
-					},
-					"foldingStartMarker": "\\{",
-					"foldingStopMarker": "\\}"
+					"begin": "\\(",
+					"end": "\\)",
+          "beginCaptures": {
+            "0": { "name": "punctuation.node.begin" }
+          },
+          "endCaptures": {
+            "0": { "name": "punctuation.node.end" }
+          },
+          "patterns":[
+            {
+              "name": "entity.node.text",
+              "match": "([a-zA-Z0-9_\\s.?!,;]+)"
+            }
+          ]
 				},
 				{
 					"name": "entity.choice",
