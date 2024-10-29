@@ -17,3 +17,6 @@ Create a file with the ".dlg" extension, and it will work.
 
 Initial release of dialogo
 
+### 2.0.1
+
+V2.0 , grammar updated
